@@ -1,0 +1,31 @@
+<% import TodoHtmex.TodoHtmlPart %>
+
+<section class="hero">
+  <h1>List todos</h1>
+</section>
+
+<section class="todos-contain">
+  <%= if length(todos) > 1 do %>
+    <div class="search">
+      <input type="text" name="note" class="inline-input"
+        placeholder="🔍  Type To Search"
+        hx-get="/todos/search"
+        hx-trigger="keyup changed delay:500ms, search"
+        hx-target="#checked-todos"
+        hx-replace="innerHTML" >
+      <div hx-include="#checked-todos" hx-target="#checked-todos" class="bulk-completed"> 
+        <a hx-put="/todos/completed">Mark completed</a>
+      </div>
+    </div>
+  <% end %>
+  <div id="todos">
+    <form id="checked-todos">
+      <%= for todo <- todos do %>
+        <%= todo(todo) %>
+      <% end %>
+    </form>
+    <form method="post" action="/todos" class="add-todo">
+      <input type="text" minlength="3" name="note" autofocus placeholder="➕  Add todo ..." />
+    </form>
+  </div>
+</section>

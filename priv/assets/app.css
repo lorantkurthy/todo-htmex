@@ -1,0 +1,137 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+body {
+  color: #000000;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: #0069d9;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.25;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.hero {
+  text-align: center;
+  border-bottom: 1px solid #e3e3e3;
+  background: #eee;
+  border-radius: 6px;
+  padding: 3em 3em 1em;
+  margin-bottom: 3rem;
+  font-weight: 200;
+  font-size: 120%;
+}
+
+@media only screen and (min-width: 500px) {
+  .todos-contain {
+    margin-left: 2rem;
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bulk-completed {
+  margin-top: 0.25rem;
+}
+
+.bulk-completed a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.todos-contain .inline-input {
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  height: 1.5rem;
+  width: max(60%, 220px);
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid #ededed;
+}
+
+.todo:first-child {
+  margin-top: 1rem;
+}
+
+.add-todo {
+  margin: 0.5rem 0.5rem;
+}
+
+.add-todo input {
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: solid 2px #d1d1d1;
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  height: 1.5rem;
+  width: 100%;
+}
+
+.update-todo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-todo div {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.update-todo .a-button {
+  font-size: 1.2rem;
+  padding: 0.25rem;
+}

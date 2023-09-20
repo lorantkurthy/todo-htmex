@@ -1,0 +1,9 @@
+<div class="todo">
+  <form hx-patch="/todos/<%= todo.id %>" hx-target="closest .todo" hx-swap="outerHTML" class="update-todo">
+    <input type="text" name="note" value="<%= todo.note %>" class="inline-input" >
+    <div>
+      <input type="submit" class="a-button" value="Save">
+      <a href="#" class="a-button" hx-get="/todos/<%= todo.id %>">Cancel</a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,7 @@
+<% import TodoHtmex.TodoHtmlPart %>
+
+<form id="checked-todos">
+  <%= for todo <- todos do %>
+    <%= todo(todo) %>
+  <% end %>
+</form>
