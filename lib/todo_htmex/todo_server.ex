@@ -42,34 +42,29 @@ defmodule TodoHtmex.TodoServer do
     {:reply, todo_list, todo_list}
   end
 
+  def handle_call({:get_todo, id}, _from, todo_list) do
+    found_todo = TodoList.get_todo_by_id(todo_list, id)
+    {:reply, found_todo, todo_list}
+  end
+
+  def handle_call({:search_todo, note}, _from, todo_list) do
+    found_todo_list = TodoList.search_todo(todo_list, note)
+    {:reply, found_todo_list, todo_list}
+  end
+
   @impl true
   def handle_cast({:create_todo, note}, todo_list) do
     updated_todo_list = TodoList.add_todo(todo_list, note)
     {:noreply, updated_todo_list}
   end
 
-  @impl true
-  def handle_call({:get_todo, id}, _from, todo_list) do
-    found_todo = TodoList.get_todo_by_id(todo_list, id)
-    {:reply, found_todo, todo_list}
-  end
-
-  @impl true
   def handle_cast({:delete_todo, id}, todo_list) do
     updated_todo_list = TodoList.delete_todo(todo_list, id)
     {:noreply, updated_todo_list}
   end
 
-  @impl true
   def handle_cast({:update_todo, todo}, todo_list) do
     updated_todo_list = TodoList.update_todo(todo_list, todo)
     {:noreply, updated_todo_list}
   end
-
-  @impl true
-  def handle_call({:search_todo, note}, _from, todo_list) do
-    found_todo_list = TodoList.search_todo(todo_list, note)
-    {:reply, found_todo_list, todo_list}
-  end
 end
-
