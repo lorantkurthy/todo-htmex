@@ -2,7 +2,9 @@
 
 Simple todo web app with Bandit, Plug and Htmx
 
-View more about Htmx https://htmx.org/docs/
+Learn more about Htmx https://htmx.org/docs/
+
+Learn more about Bandit https://github.com/mtrudel/bandit
 
 Based on https://github.com/hungle00/todo-htmx
 
