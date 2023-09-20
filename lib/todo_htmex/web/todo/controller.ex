@@ -27,7 +27,7 @@ defmodule TodoHtmex.Web.Todo.Controller do
   post "/" do
     bparams = conn.body_params
 
-    Logger.debug("create: #{inspect(bparams)}")
+    Logger.debug("create - #{inspect(bparams)}")
 
     note = Map.get(bparams, "note")
 
@@ -43,6 +43,8 @@ defmodule TodoHtmex.Web.Todo.Controller do
   get "/:id/edit" do
     params = conn.params
 
+    Logger.debug("edit - #{inspect(params)}")
+
     params["id"]
     |> String.to_integer()
     |> find_todo_by_id()
@@ -53,8 +55,10 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # search
   get "/search" do
     qparams = conn.query_params
+
+    Logger.debug("search - #{inspect(qparams)}")
+
     note = qparams["note"]
-    Logger.debug("search: #{inspect(qparams)}")
 
     TodoServer.all_todos()
     |> TodoServer.search_todo(note)
@@ -65,6 +69,8 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # show
   get "/:id" do
     params = conn.params
+
+    Logger.debug("show - #{inspect(params)}")
 
     params["id"]
     |> String.to_integer()
@@ -77,10 +83,14 @@ defmodule TodoHtmex.Web.Todo.Controller do
   patch "/:id" do
     params = conn.params
     bparams = conn.body_params
+
+    Logger.debug("update - #{inspect(params)} - #{inspect(bparams)}")
+
     id = String.to_integer(params["id"])
     note = bparams["note"]
+
     todo = %{id: id, note: note}
-    Logger.info(note)
+
     TodoServer.all_todos() |> TodoServer.update_todo(todo)
 
     id
@@ -92,7 +102,11 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # delete
   delete "/:id" do
     params = conn.params
+
+    Logger.debug("delete - #{inspect(params)}")
+
     id = String.to_integer(params["id"])
+
     TodoServer.all_todos() |> TodoServer.delete_todo(id)
 
     conn
@@ -102,6 +116,8 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # buld delete
   put "/completed" do
     bparams = conn.body_params
+
+    Logger.debug("bulk delete - #{inspect(bparams)}")
 
     bparams["ids"]
     |> Enum.map(fn id ->
