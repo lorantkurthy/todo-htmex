@@ -15,6 +15,12 @@ defmodule TodoHtmex.Web.Router do
     send_resp(conn, 200, "ok")
   end
 
+  get "/" do
+    conn
+    |> put_resp_header("location", "/todos/")
+    |> send_resp(301, "")
+  end
+
   match _ do
     send_resp(conn, 404, "oops")
   end
