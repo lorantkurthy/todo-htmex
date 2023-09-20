@@ -14,21 +14,22 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
   plug(:dispatch)
 
+  @title "Todos"
+
   # index
   get "/" do
-    title = "Todos"
-
     TodoServer.all_todos()
-    |> TodoHtml.index(title)
+    |> TodoHtml.index(@title)
     |> then(&send_resp(conn, 200, &1))
   end
 
   # create
   post "/" do
     bparams = conn.body_params
-    note = Map.get(bparams, "note")
 
     Logger.debug("create: #{inspect(bparams)}")
+
+    note = Map.get(bparams, "note")
 
     TodoServer.all_todos()
     |> TodoServer.create_todo(%{note: note, id: nil})
@@ -41,13 +42,15 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # edit
   get "/:id/edit" do
     params = conn.params
-    id = String.to_integer(params["id"])
 
-    find_todo_by_id(id)
+    params["id"]
+    |> String.to_integer()
+    |> find_todo_by_id()
     |> TodoHtml.edit()
     |> then(&send_resp(conn, 200, &1))
   end
 
+  # search
   get "/search" do
     qparams = conn.query_params
     note = qparams["note"]
@@ -62,9 +65,10 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # show
   get "/:id" do
     params = conn.params
-    id = String.to_integer(params["id"])
 
-    find_todo_by_id(id)
+    params["id"]
+    |> String.to_integer()
+    |> find_todo_by_id()
     |> TodoHtmlPart.todo()
     |> then(&send_resp(conn, 200, &1))
   end
@@ -79,7 +83,8 @@ defmodule TodoHtmex.Web.Todo.Controller do
     Logger.info(note)
     TodoServer.all_todos() |> TodoServer.update_todo(todo)
 
-    find_todo_by_id(id)
+    id
+    |> find_todo_by_id()
     |> TodoHtmlPart.todo()
     |> then(&send_resp(conn, 200, &1))
   end
@@ -97,9 +102,9 @@ defmodule TodoHtmex.Web.Todo.Controller do
   # buld delete
   put "/completed" do
     bparams = conn.body_params
-    ids = bparams["ids"]
 
-    Enum.map(ids, fn id ->
+    bparams["ids"]
+    |> Enum.map(fn id ->
       id = String.to_integer(id)
       TodoServer.all_todos() |> TodoServer.delete_todo(id)
     end)

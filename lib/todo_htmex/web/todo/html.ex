@@ -15,7 +15,8 @@ defmodule TodoHtmex.Web.Todo.Html do
   EEx.function_from_file(:def, :show, @template_dir <> "todo/show.html.eex", [:todo])
 
   def index(todos, title) do
-    inner_content = index_html(todos)
-    root_html(inner_content, title)
+    todos
+    |> index_html()
+    |> root_html(title)
   end
 end
