@@ -1,6 +1,6 @@
-defmodule TodoHtmex.TodoServer do
+defmodule TodoHtmex.Todo.Server do
   use GenServer
-  alias TodoHtmex.TodoList
+  alias TodoHtmex.Todo.List, as: TodoList
 
   # Client
   def start_link(_args) do

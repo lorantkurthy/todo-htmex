@@ -1,4 +1,4 @@
-<% import TodoHtmex.TodoHtmlPart %>
+<% import TodoHtmex.Web.Todo.HtmlPart %>
 
 <form id="checked-todos">
   <%= for todo <- todos do %>

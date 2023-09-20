@@ -10,8 +10,8 @@ defmodule TodoHtmex.Application do
     port = Application.get_env(:todo_htmex, :port)
 
     children = [
-      {Bandit, scheme: :http, plug: TodoHtmex.Router, port: port},
-      {TodoHtmex.TodoServer, nil}
+      {Bandit, scheme: :http, plug: TodoHtmex.Web.Router, port: port},
+      {TodoHtmex.Todo.Server, nil}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

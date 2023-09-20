@@ -1,4 +1,4 @@
-defmodule TodoHtmex.TodoList do
+defmodule TodoHtmex.Todo.List do
   def new() do
     []
   end

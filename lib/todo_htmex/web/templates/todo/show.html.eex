@@ -1,0 +1,3 @@
+<% import TodoHtmex.Web.Todo.HtmlPart %>
+
+<%= todo(todo) %>

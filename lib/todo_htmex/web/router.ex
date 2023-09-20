@@ -1,4 +1,4 @@
-defmodule TodoHtmex.Router do
+defmodule TodoHtmex.Web.Router do
   use Plug.Router
   use Plug.ErrorHandler
 
@@ -9,7 +9,7 @@ defmodule TodoHtmex.Router do
   plug(:match)
   plug(:dispatch)
 
-  forward("/todos", to: TodoHtmex.TodoController)
+  forward("/todos", to: TodoHtmex.Web.Todo.Controller)
 
   get "/health" do
     send_resp(conn, 200, "ok")

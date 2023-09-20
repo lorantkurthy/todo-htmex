@@ -1,8 +1,8 @@
-defmodule TodoHtmex.TodoHtml do
+defmodule TodoHtmex.Web.Todo.Html do
   require EEx
   require Logger
 
-  @template_dir File.cwd!() <> "/lib/todo_htmex/templates/"
+  @template_dir File.cwd!() <> "/lib/todo_htmex/web/templates/"
 
   EEx.function_from_file(:def, :root_html, @template_dir <> "root.html.eex", [
     :inner_content,
@@ -12,6 +12,7 @@ defmodule TodoHtmex.TodoHtml do
   EEx.function_from_file(:def, :edit, @template_dir <> "todo/edit.html.eex", [:todo])
   EEx.function_from_file(:def, :index_html, @template_dir <> "todo/index.html.eex", [:todos])
   EEx.function_from_file(:def, :search, @template_dir <> "todo/search.html.eex", [:todos])
+  EEx.function_from_file(:def, :show, @template_dir <> "todo/show.html.eex", [:todo])
 
   def index(todos, title) do
     inner_content = index_html(todos)

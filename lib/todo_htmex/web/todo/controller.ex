@@ -1,10 +1,10 @@
-defmodule TodoHtmex.TodoController do
-  alias TodoHtmex.TodoServer
+defmodule TodoHtmex.Web.Todo.Controller do
+  alias TodoHtmex.Todo.Server, as: TodoServer
   require Logger
   use Plug.Router
 
-  alias TodoHtmex.TodoHtml
-  alias TodoHtmex.TodoHtmlPart
+  alias TodoHtmex.Web.Todo.Html, as: TodoHtml
+  alias TodoHtmex.Web.Todo.HtmlPart, as: TodoHtmlPart
 
   plug(:match)
 

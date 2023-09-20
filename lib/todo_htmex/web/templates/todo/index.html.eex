@@ -1,4 +1,4 @@
-<% import TodoHtmex.TodoHtmlPart %>
+<% import TodoHtmex.Web.Todo.HtmlPart %>
 
 <section class="hero">
   <h1>List todos</h1>
