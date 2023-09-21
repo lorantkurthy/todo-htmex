@@ -60,7 +60,9 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     Logger.debug("search - #{inspect(qparams)}")
 
-    note = qparams["note"]
+    note =
+      qparams["note"]
+      |> Plug.HTML.html_escape()
 
     TodoServer.all_todos()
     |> TodoServer.search_todo(note)
