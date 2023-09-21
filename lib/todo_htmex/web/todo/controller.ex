@@ -88,7 +88,9 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     Logger.debug("update - #{inspect(params)} - #{inspect(bparams)}")
 
-    id = String.to_integer(params["id"])
+    id =
+      params["id"]
+      |> String.to_integer()
 
     note =
       bparams["note"]
@@ -110,7 +112,10 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     Logger.debug("delete - #{inspect(params)}")
 
-    id = String.to_integer(params["id"])
+    id =
+      params["id"]
+      |> String.to_integer()
+
 
     TodoServer.all_todos() |> TodoServer.delete_todo(id)
 
