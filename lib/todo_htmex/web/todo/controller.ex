@@ -29,7 +29,9 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     Logger.debug("create - #{inspect(bparams)}")
 
-    note = Map.get(bparams, "note")
+    note =
+      bparams["note"]
+      |> HtmlEntities.encode()
 
     TodoServer.all_todos()
     |> TodoServer.create_todo(%{note: note, id: nil})
@@ -87,7 +89,10 @@ defmodule TodoHtmex.Web.Todo.Controller do
     Logger.debug("update - #{inspect(params)} - #{inspect(bparams)}")
 
     id = String.to_integer(params["id"])
-    note = bparams["note"]
+
+    note =
+      bparams["note"]
+      |> HtmlEntities.encode()
 
     todo = %{id: id, note: note}
 
