@@ -27,3 +27,4 @@ todo_htmex-*.tar
 
 .envrc
 
+/mix.lock

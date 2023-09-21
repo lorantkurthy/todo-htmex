@@ -31,7 +31,7 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     note =
       bparams["note"]
-      |> HtmlEntities.encode()
+      |> Plug.Html.html_escape()
 
     TodoServer.all_todos()
     |> TodoServer.create_todo(%{note: note, id: nil})
@@ -94,7 +94,7 @@ defmodule TodoHtmex.Web.Todo.Controller do
 
     note =
       bparams["note"]
-      |> HtmlEntities.encode()
+      |> Plug.HTML.html_escape()
 
     todo = %{id: id, note: note}
 

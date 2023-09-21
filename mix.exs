@@ -23,8 +23,7 @@ defmodule TodoHtmex.MixProject do
   defp deps do
     [
       {:bandit, "~> 1.0-pre"},
-      {:plug, "~> 1.14"},
-      {:html_entities, "~> 0.5"}
+      {:plug, "~> 1.14"}
     ]
   end
 end
