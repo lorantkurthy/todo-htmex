@@ -7,7 +7,7 @@
     <title><%= title || "TodoHtmex" %></title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link rel="stylesheet" href="/static/app.css"/>
-    <script src="https://unpkg.com/htmx.org@1.9.5" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.6" crossorigin="anonymous"></script>
     <script defer phx-track-static type="text/javascript" src="/static/app.js"></script>
   </head>
   <body hx-boost="true">
